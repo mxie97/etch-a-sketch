@@ -3,10 +3,16 @@
     flex-wrap: wrap;
     width: 480px;
     height: 480px;
+    border-color: black;
+    border-style: solid;
 }
 
 .grid-unit {
-    border-color: black;
-    border-style: solid;
-    flex: 1 0 5%;
+    border-color: grey;
+    border-style: none;
+    flex: 1 0 6.25%;
+}
+
+.grid-unit.hover {
+    background-color: black;
 }
