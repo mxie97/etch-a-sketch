@@ -9,6 +9,9 @@ for (let i=0; i<16*16; i++) {
 }
 
 let gridUnits = document.querySelectorAll('.grid-unit');
+gridUnits.forEach((item) => {
+    item.addEventListener('mouseover', activateColor)
+})
 
 changeGridButton.addEventListener('click', changeGridDensity)
 
@@ -41,6 +44,7 @@ function changeGridDensity() {
     console.log(flexPercent);
     gridUnits.forEach((item) => {
         item.style.flexBasis = `${flexPercent}%`;
+        item.addEventListener('mouseover', activateColor)
     });
 
 }
@@ -50,7 +54,4 @@ function activateColor(e) {
     activatedGridUnit.classList.add('hover');
 }
 
-gridUnits.forEach((item) => {
-    item.addEventListener('mouseover', activateColor)
-})
 
