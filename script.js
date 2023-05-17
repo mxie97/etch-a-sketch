@@ -1,14 +1,14 @@
 const gridContainer = document.getElementById('grid-container')
 const gridSlider = document.getElementById('change-grid')
 const resetButton = document.getElementById('reset-button')
-const rainbowButton = document.getElementById('rainbow-button')
+const colorButtons = document.querySelectorAll('.color-choice')
+let color = 'black';
 let gridUnits;
 
 function populateGrid(squaresPerSide) {
     for (let i=0; i<squaresPerSide*squaresPerSide; i++) {
         const newDiv = document.createElement("div");
         newDiv.classList.add('grid-unit');
-        newDiv.setAttribute('id', `${i}`);
         gridContainer.appendChild(newDiv);
     }    
 }
@@ -34,15 +34,26 @@ function changeGridDensity(squaresPerSide) {
 
 }
 
-function activateColor(e) {
-    let activatedGridUnit = document.getElementById(e.target.id);
-    activatedGridUnit.classList.add('hover');
+function activateColor() {
+    switch (color) {
+        case 'black':
+            this.style.backgroundColor = 'black';
+            break;
+        case 'rainbow':
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            break;
+    }
+    // this.style.backgroundColor = 'gray';
 }
 
 function deactivateAllColor() {
     gridUnits.forEach((item) => {
-        item.classList.remove('hover');
+        item.style.backgroundColor = 'white';
     });
+}
+
+function changeColor(e) {
+    color = e.target.dataset.color;
 }
 
 // populate grid initially
@@ -54,4 +65,10 @@ gridSlider.oninput = function() {
     changeGridDensity(this.value);
 }
 
+// reset button
 resetButton.addEventListener('click', deactivateAllColor)
+
+// color buttons
+colorButtons.forEach((colorButton) => {
+    colorButton.addEventListener('click', changeColor)
+})
