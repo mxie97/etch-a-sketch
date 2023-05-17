@@ -1,32 +1,6 @@
 const gridContainer = document.getElementById('grid-container')
-const changeGridSlider = document.getElementById('change-grid')
-
-for (let i=0; i<16*16; i++) {
-    const newDiv = document.createElement("div");
-    newDiv.classList.add('grid-unit');
-    newDiv.setAttribute('id', `${i}`);
-    gridContainer.appendChild(newDiv);
-}
-
-let gridUnits = document.querySelectorAll('.grid-unit');
-gridUnits.forEach((item) => {
-    item.addEventListener('mouseover', activateColor)
-})
-
-changeGridSlider.oninput = function() {
-    changeGridDensity(this.value);
-}
-
-function promptSquaresPerSide() {
-    let squaresPerSide = prompt("How many squares per side? Enter an integer between 16 and 100.");
-    return squaresPerSide;
-}
-
-function clearGrid() {
-    gridUnits.forEach((item) => {
-        item.remove()
-    });
-}
+const gridSlider = document.getElementById('change-grid')
+let gridUnits;
 
 function populateGrid(squaresPerSide) {
     for (let i=0; i<squaresPerSide*squaresPerSide; i++) {
@@ -37,13 +11,20 @@ function populateGrid(squaresPerSide) {
     }    
 }
 
-function changeGridDensity(gridDensity) {
+function clearGrid() {
+    if (gridUnits) {
+        gridUnits.forEach((item) => {
+            item.remove()
+        });
+    } else return;
+}
+    
+function changeGridDensity(squaresPerSide) {
 
     clearGrid();
-    populateGrid(gridDensity);
+    populateGrid(squaresPerSide);
     gridUnits = document.querySelectorAll('.grid-unit');
-    let flexPercent = (1/gridDensity)*100;
-    console.log(flexPercent);
+    let flexPercent = (1/squaresPerSide)*100;
     gridUnits.forEach((item) => {
         item.style.flexBasis = `${flexPercent}%`;
         item.addEventListener('mouseover', activateColor)
@@ -56,4 +37,11 @@ function activateColor(e) {
     activatedGridUnit.classList.add('hover');
 }
 
+// populate grid initially
+changeGridDensity(16);
 
+
+// listen for grid slider input and change grid density
+gridSlider.oninput = function() {
+    changeGridDensity(this.value);
+}
