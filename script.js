@@ -1,5 +1,7 @@
 const gridContainer = document.getElementById('grid-container')
 const gridSlider = document.getElementById('change-grid')
+const resetButton = document.getElementById('reset-button')
+const rainbowButton = document.getElementById('rainbow-button')
 let gridUnits;
 
 function populateGrid(squaresPerSide) {
@@ -37,6 +39,12 @@ function activateColor(e) {
     activatedGridUnit.classList.add('hover');
 }
 
+function deactivateAllColor() {
+    gridUnits.forEach((item) => {
+        item.classList.remove('hover');
+    });
+}
+
 // populate grid initially
 changeGridDensity(16);
 
@@ -45,3 +53,5 @@ changeGridDensity(16);
 gridSlider.oninput = function() {
     changeGridDensity(this.value);
 }
+
+resetButton.addEventListener('click', deactivateAllColor)
