@@ -42,8 +42,21 @@ function activateColor() {
         case 'rainbow':
             this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
             break;
+        case 'gray-scale':
+
+            if (this.style.backgroundColor.match(/rgb/)) {
+                let currentOpacity = Number(this.style.backgroundColor.slice(-4, -1));
+                if (currentOpacity <= 0.9) {
+                    this.style.backgroundColor = `rgba(0, 0, 0, ${currentOpacity + 0.1})`;
+                } else if (this.style.backgroundColor = 'rgb(0,0,0)') break;
+            } else if (this.style.backgroundColor.match(/black/)) {
+                break;
+            } else {
+                this.style.backgroundColor = 'rgba(0,0,0,0.1)';
+            }
+            break;
     }
-    // this.style.backgroundColor = 'gray';
+
 }
 
 function deactivateAllColor() {
@@ -54,6 +67,7 @@ function deactivateAllColor() {
 
 function changeColor(e) {
     color = e.target.dataset.color;
+    console.log(color);
 }
 
 // populate grid initially
