@@ -1,5 +1,5 @@
 const gridContainer = document.getElementById('grid-container')
-const gridSlider = document.getElementById('change-grid')
+const gridSlider = document.getElementById('change-grid-slider')
 const resetButton = document.getElementById('reset-button')
 const colorButtons = document.querySelectorAll('.color-choice')
 let color = 'black';
@@ -73,16 +73,12 @@ function changeColor(e) {
 // populate grid initially
 changeGridDensity(16);
 
-
-// listen for grid slider input and change grid density
 gridSlider.oninput = function() {
     changeGridDensity(this.value);
 }
 
-// reset button
 resetButton.addEventListener('click', deactivateAllColor)
 
-// color buttons
 colorButtons.forEach((colorButton) => {
     colorButton.addEventListener('click', changeColor)
 })

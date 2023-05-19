@@ -6,24 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <header>Etch-a-Sketch</header>
     
-    <button id="reset-button">Reset</button>
-    
-    <button class="color-choice" data-color="black">Black</button>
-    <button class="color-choice" data-color="rainbow">Rainbow</button>
-    <button class="color-choice" data-color="gray-scale">Gray Scale</button>
+    <div id="buttons-container">
+        <button id="reset-button">Reset</button>
+        <button class="color-choice" id="black-button" data-color="black">Black</button>
+        <button class="color-choice" id="rainbow-button" data-color="rainbow">Rainbow</button>
+        <button class="color-choice" id="gray-scale-button" data-color="gray-scale">Gray Scale</button>
+    </div>
 
-    <div id="grid-container"></div>
+    <div id="grid-container">
+
+    </div>
     
-    <div>
+    <div id="grid-density-slider-container">
         <p>Change grid density:</p>
-        <input type="range" min="8" max="64" value="16" id="change-grid">
+        <input type="range" min="8" max="64" value="16" id="change-grid-slider">
     </div>
  
-    
+    <footer>
+        mxie97 <a href="https://github.com/mxie97" target="_blank"><i class="fa fa-github fa_custom"></i></a>
+    </footer>
+
     <script src="script.js"></script> 
 </body>
 </html>

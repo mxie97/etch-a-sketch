@@ -1,3 +1,65 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#buttons-container {
+    margin: 30px 0 20px;
+    display: flex;
+    width: 480px;
+    justify-content: space-between;
+}
+
+button {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 20px;
+    background-color: white;
+    border-radius: 10px;
+    border-color: aliceblue;
+    border-width: 3px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#black-button {
+    background-color: black;
+    color:aliceblue
+}
+
+#rainbow-button {
+    background: linear-gradient(90deg,
+    hsl(0, 80%, 77%),
+    hsl(30, 100%, 50%),
+    hsl(60, 100%, 50%),
+    hsl(90, 100%, 50%),
+    hsl(120, 100%, 50%),
+    hsl(150, 100%, 50%),
+    hsl(180, 100%, 50%),
+    hsl(210, 76%, 69%),
+    hsl(240, 85%, 69%),
+    hsl(270, 73%, 72%),
+    hsl(300, 74%, 77%),
+    hsl(330, 86%, 78%),
+    hsl(0, 79%, 73%)
+    );
+}
+
+#gray-scale-button {
+    background-color: gainsboro;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
 #grid-container {
     display: flex;
     flex-wrap: wrap;
@@ -12,3 +74,55 @@
     flex: 1 0 6.25%;
 }
 
+#grid-density-slider-container {
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+    margin: 10px;
+    font-size: smaller;
+}
+
+#change-grid-slider {
+    margin: 16px auto;
+    appearance: none;
+    width: 100%;
+    height: 25px;
+    background: aliceblue;
+    outline: none;
+    opacity: .7;
+
+    transition: opacity .2s;
+
+}
+
+#change-grid-slider:hover {
+    opacity: 1;
+}
+
+#change-grid-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: cornflowerblue;
+    cursor: pointer;
+
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: auto auto 10px;
+}
+
+.fa_custom {
+    color: black;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+}
