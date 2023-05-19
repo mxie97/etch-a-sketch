@@ -89,8 +89,7 @@ button:hover {
     height: 25px;
     background: aliceblue;
     outline: none;
-    opacity: .7;
-
+    opacity: .8;
     transition: opacity .2s;
 
 }
